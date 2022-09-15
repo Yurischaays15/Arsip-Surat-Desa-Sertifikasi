@@ -20,4 +20,4 @@ Route::get('arsipsurat/edit/{id_arsipsurat}', 'ArsipSuratController@edit')->name
 Route::post('arsipsurat/update/{id_arsipsurat}', 'ArsipSuratController@update')->name('update');
 
 //hapus surat
-Route::get('arsipsurat/delete/{id_arsipsurat}', 'ArsipSuratController@delete')->name('delete');
+Route::delete('arsipsurat/delete/{id_arsipsurat}', 'ArsipSuratController@delete')->name('delete');

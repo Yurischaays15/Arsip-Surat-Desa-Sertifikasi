@@ -103,8 +103,11 @@ class ArsipSuratController extends Controller
     //hapus data surat dari tabel arsipsurat
     public function delete($id_arsipsurat)
     {
-        $arsipsurat = ArsipSurat::find($id_arsipsurat);
-        $arsipsurat->delete();
+        //menghapus data arsip berdasarkan id
+        DB::table('arsipsurat')->where('id_arsipsurat', $id_arsipsurat)->delete();
+        // $arsipsurat = ArsipSurat::find($id_arsipsurat);
+        // $arsipsurat->delete();
+        //alihkan halaman ke home
         return redirect('/')->with('success','Data berhasil dihapus');
     }
 }
