@@ -7,9 +7,9 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>ARSIP SURAT - SERTIFIKASI DIPA 2022</title>
-        <!-- <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" /> -->
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
-        <!-- <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script> -->
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
         <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -86,22 +86,25 @@
                                             <td>
                                                 <!-- <button onclick="handleDelete({{$arsip_surat->id_arsipsurat}})" class="btn btn-danger btn-sm">Hapus</button> -->
                                                 <button class="btn btn-primary sweet-1" onclick="swal({
-                                                    title: 'Apakah Anda yakin ingin menghapus arsip surat ini?',
-                                                    text: 'File yang dihapus tidak dapat dikembalikan',
-                                                    icon: 'warning',
-                                                    buttons: true,
-                                                    dangerMode: true,
-                                                    })
-                                                    .then((willDelete) => {
-                                                        if (willDelete) {
-                                                            swal('Berhasil dihapus', {
-                                                                icon: 'success',
-                                                            });
-                                                        } else {
-                                                            swal('File anda aman', {
-                                                                icon: 'info');
-                                                             }
-                                                        });"> Hapus</button>
+  title: 'Apakah Anda yakin ingin menghapus arsip surat ini?',
+  text: 'File yang dihapus tidak dapat dikembalikan',
+  icon: 'warning',
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+    swal('Berhasil dihapus', {
+      icon: 'success',
+    });
+  } else {
+    swal('File anda aman', {
+        icon: 'info',
+    });
+  }
+});
+" >
+Hapus</button>
 
                                                 <a href="public/files/{{$arsip_surat->file_surat}}" class="btn btn-warning btn-sm">Unduh</a>
                                                 <a href="{{route('show', $arsip_surat->id_arsipsurat)}}" class="btn btn-primary btn-sm">Lihat >></i> </a>
@@ -117,13 +120,13 @@
                                             <h5 class="modal-title" id="staticBackdropLabel"> Alert </h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <div class="modal-body">
+                                        <!-- <div class="modal-body">
                                             Apakah Anda yakin ingin menghapus arsip surat ini?
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
                                             <a id="deleteLink" class="btn btn-danger">Ya!</a>
-                                        </div>
+                                        </div> -->
                                         </div>
                                     </div>
                                 </div>
