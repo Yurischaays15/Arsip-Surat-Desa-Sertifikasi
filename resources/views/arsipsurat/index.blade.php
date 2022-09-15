@@ -6,11 +6,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Home</title>
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+        <title>ARSIP SURAT - SERTIFIKASI DIPA 2022</title>
+        <!-- <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" /> -->
         <link href="css/styles.css" rel="stylesheet" />
-        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-    </head>
+        <!-- <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script> -->
+        <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+	<!--library alert --> 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
+</head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
@@ -75,7 +84,25 @@
                                             <td>{{ $arsip_surat->judul }}</td>
                                             <td>{{ $arsip_surat->created_at }}</td>
                                             <td>
-                                                <button onclick="handleDelete({{$arsip_surat->id_arsipsurat}})" class="btn btn-danger btn-sm">Hapus</button>
+                                                <!-- <button onclick="handleDelete({{$arsip_surat->id_arsipsurat}})" class="btn btn-danger btn-sm">Hapus</button> -->
+                                                <button class="btn btn-primary sweet-1" onclick="swal({
+                                                    title: 'Apakah Anda yakin ingin menghapus arsip surat ini?',
+                                                    text: 'File yang dihapus tidak dapat dikembalikan',
+                                                    icon: 'warning',
+                                                    buttons: true,
+                                                    dangerMode: true,
+                                                    })
+                                                    .then((willDelete) => {
+                                                        if (willDelete) {
+                                                            swal('Berhasil dihapus', {
+                                                                icon: 'success',
+                                                            });
+                                                        } else {
+                                                            swal('File anda aman', {
+                                                                icon: 'info');
+                                                             }
+                                                        });"> Hapus</button>
+
                                                 <a href="public/files/{{$arsip_surat->file_surat}}" class="btn btn-warning btn-sm">Unduh</a>
                                                 <a href="{{route('show', $arsip_surat->id_arsipsurat)}}" class="btn btn-primary btn-sm">Lihat >></i> </a>
                                             </td>
