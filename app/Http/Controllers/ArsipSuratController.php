@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 use App\ArsipSurat;
 use App\KategoriSurat;
 
@@ -39,7 +40,8 @@ class ArsipSuratController extends Controller
     {
         $file_surat     = new ArsipSurat();
         $this->validate($request, [
-            'file_surat' => 'required|file|mimes:pdf',
+            'nomor_surat' => ['required', Rule::unique('arsipsurat')],
+             'file_surat' => ['required', 'file', 'mimes:pdf'],
         ]);
         if($request->hasfile('file_surat'))
          {
@@ -104,9 +106,9 @@ class ArsipSuratController extends Controller
     public function delete($id_arsipsurat)
     {
         //menghapus data arsip berdasarkan id
-        DB::table('arsipsurat')->where('id_arsipsurat', $id_arsipsurat)->delete();
-        // $arsipsurat = ArsipSurat::find($id_arsipsurat);
-        // $arsipsurat->delete();
+        // DB::table('arsipsurat')->where('id_arsipsurat', $id_arsipsurat)->delete();
+        $arsipsurat = ArsipSurat::find($id_arsipsurat);
+        $arsipsurat->delete();
         //alihkan halaman ke home
         return redirect('/')->with('success','Data berhasil dihapus');
     }

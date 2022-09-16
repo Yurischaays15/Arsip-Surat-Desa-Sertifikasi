@@ -84,28 +84,7 @@
                                             <td>{{ $arsip_surat->judul }}</td>
                                             <td>{{ $arsip_surat->created_at }}</td>
                                             <td>
-                                                <!-- <button onclick="handleDelete({{$arsip_surat->id_arsipsurat}})" class="btn btn-danger btn-sm">Hapus</button> -->
-                                                <button class="btn btn-primary sweet-1" onclick="swal({
-  title: 'Apakah Anda yakin ingin menghapus arsip surat ini?',
-  text: 'File yang dihapus tidak dapat dikembalikan',
-  icon: 'warning',
-  buttons: true,
-  dangerMode: true,
-})
-.then((willDelete) => {
-  if (willDelete) {
-    swal('Berhasil dihapus', {
-      icon: 'success',
-    });
-  } else {
-    swal('File anda aman', {
-        icon: 'info',
-    });
-  }
-});
-" >
-Hapus</button>
-
+                                                <button onclick="handleDelete({{$arsip_surat->id_arsipsurat}})" class="btn btn-danger btn-sm">Hapus</button>
                                                 <a href="public/files/{{$arsip_surat->file_surat}}" class="btn btn-warning btn-sm">Unduh</a>
                                                 <a href="{{route('show', $arsip_surat->id_arsipsurat)}}" class="btn btn-primary btn-sm">Lihat >></i> </a>
                                             </td>
@@ -117,16 +96,16 @@ Hapus</button>
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="staticBackdropLabel"> Alert </h5>
+                                            <h5 class="modal-title" id="staticBackdropLabel"> Delete </h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <!-- <div class="modal-body">
+                                        <div class="modal-body">
                                             Apakah Anda yakin ingin menghapus arsip surat ini?
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
                                             <a id="deleteLink" class="btn btn-danger">Ya!</a>
-                                        </div> -->
+                                        </div>
                                         </div>
                                     </div>
                                 </div>
@@ -146,6 +125,16 @@ Hapus</button>
                 </footer>
             </div>
         </div>
+
+        <script>
+            function handleDelete(id_arsipsurat)
+            {
+                var link = document.getElementById('deleteLink')
+                
+                link.href = "{{ route('delete', $arsip_surat->id_arsipsurat) }}"
+                $('#deleteModal').modal('show')
+            }
+        </script>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>

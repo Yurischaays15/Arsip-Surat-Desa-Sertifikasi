@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Arsipkan Surat</title>
+        <title>Arsipkan Surat - SERTIFIKASI DIPA 2022</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="../css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -79,7 +79,7 @@
                                                 </div><br>
                                                 <div class="form-group">
                                                     <label for="file_surat">File Surat (PDF)</label>                 
-                                                    <input type="file" class="form-control" required="required" name="file_surat" value="{{ old('file_surat') }}"> </br> 
+                                                    <input type="file" class="form-control @error('file_surat') is-invalid @enderror" name="file_surat" value="{{ old('file_surat') }}" required autocomplete="file_surat" autofocus  name="file_surat" id="file_surat">
                                                     @error('file_surat')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
